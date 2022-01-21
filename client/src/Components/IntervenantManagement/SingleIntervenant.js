@@ -8,16 +8,15 @@ const SingleIntervenant = () => {
     const dispatch=useDispatch()
     const {id}=useParams();
     console.log("IntervenantID",id)
-    const intervenant=useSelector(state=>state.IntervenantReducer.intervenant)
+    const intervenant=useSelector(state=>state.IntervenantReducer.intervenants)
     console.log("intervenant: from single intervenant",intervenant)
 
     useEffect(()=>{
-      
   dispatch(getOneIntervenant(id)) 
-    },[])
+    },[dispatch])
 
    if(!intervenant){
-       return 'loading';
+       return 'loading'
    }
   return (
     <div className="card" style={{width: '18rem'}}>

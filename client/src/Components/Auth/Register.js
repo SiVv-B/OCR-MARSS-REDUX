@@ -12,6 +12,7 @@ const Register = () => {
     username: " ",
     email: " ",
     password: " ",
+    SelectedFile:" ",
   });
   const handleChange = (event) => {
     setUser({ ...user, [event.target.id]: event.target.value });
@@ -23,6 +24,7 @@ const Register = () => {
       username: " ",
       email: " ",
       password: " ",
+      SelectedFile:" ",
     });
   };
   
@@ -64,9 +66,20 @@ const Register = () => {
           placeholder="Password"
         />
       </div>
+      <div className="form-group">
+        <label for="SelectedFile">Logo/image de l'entreprise client</label>
+        <input
+          value={user.SelectedFile}
+          onChange={handleChange}
+          type="text"
+          className="form-control"
+          id="SelectedFile"
+          placeholder="logo photo"
+        />
+      </div>
 
       <button type="submit" className="btn btn-primary">
-        Submit
+        Creer un compte
       </button>
     </form>
   );

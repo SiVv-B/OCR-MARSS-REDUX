@@ -11,15 +11,39 @@ const postUser = async (request, response) => {
         .status(400)
         .json({ message: "you are alredey registered" });
     }
+
     const newUser = await new User({
       username: user.username,
       email: user.email,
-      age: user.age,
+      password:user.password,
+      SelectedFile:user.SelectedFile,
+      NumSiret:user.NumSiret,
+      role:user.role,
+      SiegeSocialAdresse:user.SiegeSocialAdresse,
+      SiegeSocialTelephone:user.SiegeSocialTelephone,
+      SiegeSocialEmail:user.SiegeSocialEmail,
+      RepresentantNom:user.RepresentantNom,
+      RepresentFonction:user.RepresentFonction,
+      RepresentantTelephone:user.RepresentantTelephone,
+      RepresentantEmail:user.RepresentantEmail,
+      RepresentantNumHabilitation:user.RepresentantNumHabilitation,
+      SISERINumProtocole:user.SISERINumProtocole,
+      SISERINomCle:user.SISERINomCle,
+      SISERIUpdate:user.SISERIUpdate,
+      MDTNom:user.MDTNom,
+      MDTPrenom:user.MDTPrenom,
+      MDTNumHabilitation:user.MDTNumHabilitation,
+      MDTSiret:user.MDTSiret,
+      MDTTelephone:user.MDTTelephone,
+      MDTEmail:user.MDTEmail,
+      ContratNum:user.ContratNum,
+      ContratDateDebut:user.ContratDateDebut,
+      ContratDateFin:user.ContratDateFin,
     });
     await newUser.save();
     response.status(200).json({ user: newUser });
   } catch (error) {
-    response.status(500).json({ error: "useris not registred" });
+    response.status(500).json({ error: "user is not registred" });
   }
 };
 //get request
@@ -54,8 +78,9 @@ const updateUser=async(request,response)=>{
     const newUser=request.body
  try {
      const updatedUser =await User.findByIdAndUpdate(id,newUser,{new:true})
-     response.status(200).json({user:updatedUser,message:'user is updated'})
+     response.status(200).json({user:updatedUser, message:'Mise à jour du client effectuée avec succès'})
  } catch (error) {
+   console.log("la mise à jour n'a pas pu être effectuée")
      response.status(500).json({error:'update failed'})
  }
 }
@@ -68,6 +93,7 @@ const getOneUser=async(request,response)=>{
         response.status(200).json({user:userFound})
 
     } catch (error) {
+      console.log("failed to get one user")
         response.status(500).json({error:'failed to get one user'})
     }
 }

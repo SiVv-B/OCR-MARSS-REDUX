@@ -1,5 +1,5 @@
 import axios from "axios"
-import {USER_RGISTER,USER_FAIL,GET_USER,USER_LOGIN,LOG_OUT} from "../Actions/ActionTypes"
+import {USER_RGISTER,USER_FAIL,GET_USER,USER_LOGIN,LOG_OUT,} from "../Actions/ActionTypes"
 
 export const getUser=()=>async(dispatch)=>{
     const config={
@@ -15,7 +15,8 @@ export const getUser=()=>async(dispatch)=>{
         error.response.data.errors.map(err=>alert(err.msg))
        
     }
-}
+} 
+
 
 export const login=(user,navigate)=>async(dispatch)=>{
     try {
@@ -43,3 +44,4 @@ export const register=(user,navigate)=>async(dispatch)=>{
         error.response.data.errors.map(err=>alert(err.msg))
     }
 }
+

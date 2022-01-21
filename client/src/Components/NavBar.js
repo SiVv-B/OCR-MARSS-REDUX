@@ -16,7 +16,7 @@ const Navbar = () => {
         <a className="navbar-brand">OCR-MARSS</a>
         {isAuth ? (
           <button onClick={handleClick}>LOG OUT</button>
-        ) : (
+        ) : (null)}
           <div>
               <Link to="/" className="navbar-brand">
               Home
@@ -42,8 +42,9 @@ const Navbar = () => {
         <Link to="/intervenantsListe"  className="navbar-brand">       
             Intervenant liste
         </Link>
+
           </div>
-        )}
+        
       </div>
     </nav>
   );

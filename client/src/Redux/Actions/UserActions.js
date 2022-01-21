@@ -12,7 +12,7 @@ export const GetUsers = () => async (dispatch) => {
     console.log(error);
   }
 };
-export const addUser = (user) => async (dispatch) => {
+export const addUser = (user) => async () => {
   try {
     console.log(user);
     const response = await axios.post("/client/user", user);
@@ -28,6 +28,7 @@ export const deleteUser = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
 export const updateUser = (id, user) => async (dispatch) => {
   try {
     const response = await axios.put(`/client/user/${id}`, user);
@@ -38,6 +39,7 @@ export const updateUser = (id, user) => async (dispatch) => {
     console.log(error);
   }
 };
+
 export const getOneUser=(id)=>async(dispatch)=>{
   try {
     const response=await axios.get(`/client/user/${id}`)

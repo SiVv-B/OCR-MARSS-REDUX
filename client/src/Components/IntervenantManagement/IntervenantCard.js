@@ -58,7 +58,7 @@ const IntervenantCard = ({ intervenant }) => {
         </button>
 
        <Link to={`/intervenantDetails/${intervenant._id}`}>
-        <button className="btn btn-primary" onClick={getIntervenant}>see user</button>
+        <button className="btn btn-primary" onClick={getIntervenant}>Détails sur cet intervenant</button>
         </Link>
 
         {show ? (
@@ -101,7 +101,6 @@ const IntervenantCard = ({ intervenant }) => {
           </form>
         ) : null}
       </div>
-      <div></div>
     </div>
   )
 }

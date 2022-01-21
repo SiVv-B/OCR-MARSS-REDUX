@@ -45,6 +45,7 @@ function App() {
         <Route path="/list" element={<UserList />} />
         <Route path="/add" element={<AddUser />} />
       <Route path="/details/:id" element={<SingleUser />} /> 
+
       {/* <Route path="/profile" element={<SingleUser />} /> */} 
 
  {/* intervenant management routes */}
