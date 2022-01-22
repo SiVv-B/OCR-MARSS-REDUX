@@ -1,69 +1,73 @@
-import React ,{useState}from "react";
+import React ,{useState}from "react"
 import {addUser} from "../../Redux/Actions/UserActions"
-import { register } from "../../Redux/Actions/AuthActions";
+import { register } from "../../Redux/Actions/AuthActions"
 import {useDispatch} from 'react-redux'
 import {useNavigate} from "react-router"
 const UserAdd = () => {
   const navigate=useNavigate()
-  const dispatch=useDispatch();
+  const dispatch=useDispatch()
   const [user,setUser]=useState({
-  username: " ",
-  SelectedFile: " ",
-  email: " ",
-  NumSiret:" ",
-  SiegeSocialAdresse:" ",
-  SiegeSocialTelephone:" ",
-  SiegeSocialEmail:" ",
-  RepresentantNom:" ",
-  RepresentFonction:" ",
-  RepresentantTelephone:" ",
-  RepresentantEmail:" ",
-  RepresentantNumHabilitation:" ",
-  SISERINumProtocole:" ",
-  SISERINomCle:" ",
-  SISERIUpdate:" ",
-  MDTNom:" ",
-  MDTPrenom:" ",
-  MDTNumHabilitation:" ",
-  MDTSiret:" ",
-  MDTTelephone:" ",
-  MDTEmail:" ",
-  ContratNum:" ",
-  ContratDateDebut:" ",
-  ContratDateFin:" ",});
+    username: "",
+    email: "",
+    password: "",
+    SelectedFile:"",
+    NumSiret:"",
+    role:"",
+    SiegeSocialAdresse:"",
+    SiegeSocialTelephone:"",
+    SiegeSocialEmail:"",
+    RepresentantNom:"",
+    RepresentFonction:"",
+    RepresentantTelephone:"",
+    RepresentantEmail:"",
+    RepresentantNumHabilitation:"",
+    SISERINumProtocole:"",
+    SISERINomCle:"",
+    SISERIUpdate:"",
+    MDTNom:"",
+    MDTPrenom:"",
+    MDTNumHabilitation:"",
+    MDTSiret:"",
+    MDTTelephone:"",
+    MDTEmail:"",
+    ContratNum:"",
+    ContratDateDebut:"",
+    ContratDateFin:"",
+  })
   const handleChange=(event)=>{
-    setUser({...user,[event.target.id]:event.target.value});
+    setUser({...user,[event.target.id]:event.target.value})
   }
  const onSubmit=(event)=>{
-  event.preventDefault();
-  dispatch(register(user,navigate))
+  event.preventDefault()
+  dispatch(addUser(user))
   setUser({
-    username: " ",
-    SelectedFile: " ",
-    email: " ",
-    password:" ",
-    NumSiret:" ",
-    SiegeSocialAdresse:" ",
-    SiegeSocialTelephone:" ",
-    SiegeSocialEmail:" ",
-    RepresentantNom:" ",
-    RepresentFonction:" ",
-    RepresentantTelephone:" ",
-    RepresentantEmail:" ",
-    RepresentantNumHabilitation:" ",
-    SISERINumProtocole:" ",
-    SISERINomCle:" ",
-    SISERIUpdate:" ",
-    MDTNom:" ",
-    MDTPrenom:" ",
-    MDTNumHabilitation:" ",
-    MDTSiret:" ",
-    MDTTelephone:" ",
-    MDTEmail:" ",
-    ContratNum:" ",
-    ContratDateDebut:" ",
-    ContratDateFin:" ",
-  });
+    username: "",
+    email: "",
+    password: "",
+    SelectedFile:"",
+    NumSiret:"",
+    role:"",
+    SiegeSocialAdresse:"",
+    SiegeSocialTelephone:"",
+    SiegeSocialEmail:"",
+    RepresentantNom:"",
+    RepresentFonction:"",
+    RepresentantTelephone:"",
+    RepresentantEmail:"",
+    RepresentantNumHabilitation:"",
+    SISERINumProtocole:"",
+    SISERINomCle:"",
+    SISERIUpdate:"",
+    MDTNom:"",
+    MDTPrenom:"",
+    MDTNumHabilitation:"",
+    MDTSiret:"",
+    MDTTelephone:"",
+    MDTEmail:"",
+    ContratNum:"",
+    ContratDateDebut:"",
+    ContratDateFin:"",
+  })
  
  }
   return (
@@ -111,7 +115,10 @@ const UserAdd = () => {
                 placeholder="inserer le lien de l'image/logo"
                 value={user.SelectedFile}
               />
-            </div>
+              </div>
+
+
+
             <div className="form-group">
               <label for="NumSiret">N°SIRET</label>
               <input
@@ -334,12 +341,27 @@ const UserAdd = () => {
                 id="ContratDateFin"
                 value={user.ContratDateFin}
               />
-            </div>
+            </div> 
+                        <div className="form-group">
+              <label for="role">Date de fin du contrat</label>
+              <input
+                onChange={handleChange}
+                type="number"
+                className="form-control"
+                id="role"
+                value={user.role}
+              />
+            </div> 
+            
+            
+            
+            
+            
       <button type="submit" className="btn btn-primary">
         Ajouter le client
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default UserAdd;
+export default UserAdd

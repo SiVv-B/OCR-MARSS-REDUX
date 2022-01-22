@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { deleteIntervenant,updateIntervenant,getOneIntervenant } from "../../Redux/Actions/IntervenantActions"
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
 import { useNavigate } from "react-router"
+import { Link } from "react-router-dom"
+import { deleteIntervenant, getOneIntervenant, updateIntervenant } from "../../Redux/Actions/IntervenantActions"
 
 const IntervenantCard = ({ intervenant }) => {
    console.log("hello from IntervenantCard")
@@ -10,9 +10,20 @@ const IntervenantCard = ({ intervenant }) => {
   const dispatch = useDispatch()
   const [show, setShow] = useState(false)
   const [updatedIntervenant, setupDated] = useState({
-    Nom: " ",
     Prenom: " ",
-    NSS: 0,
+    Nom: " ",
+    SelectedFile: " ",
+    NSS: " ",
+    NSuiviCarte:"",
+    CarteIdentite:"",
+    CarteVitale:"",
+    DateDeNaissance:"",
+    DateDerniereVisiteMedicale:"",
+    VisiteMedicaleARenouvelerAvantLe:"",
+    DateDerniereFicheDexposition:"",
+    DateDerniereFicheDaptitude:"",
+    Commentaire:" ",
+
   })
   const handleChange = (event) => {
     setupDated({ ...updatedIntervenant, [event.target.id]: event.target.value })
@@ -30,34 +41,50 @@ const IntervenantCard = ({ intervenant }) => {
   const onSubmit = (event) => {
     event.preventDefault()
     dispatch(updateIntervenant(intervenant._id, updatedIntervenant))
-    setupDated({ Nom: " ", Prenom: " ", NSS: " " })
+    setupDated({ 
+      Prenom: " ",
+      Nom: " ",
+      SelectedFile: " ",
+      NSS: " ",
+      NSuiviCarte:"",
+      CarteIdentite:"",
+      CarteVitale:"",
+      DateDeNaissance:"",
+      DateDerniereVisiteMedicale:"",
+      VisiteMedicaleARenouvelerAvantLe:"",
+      DateDerniereFicheDexposition:"",
+      DateDerniereFicheDaptitude:"",
+      Commentaire:" ",
+    })
     setShow(false)
   }
   const getIntervenant=()=>{
     dispatch(getOneIntervenant(intervenant._id))
-    navigate('/intervenant-details')
+
   }
 
   return (
     <div>
       <div className="card text-center" style={{ width: "500px" }}>
-        <div className="card-header">Intervenant</div>
+        <div className="card-header">Intervenants</div>
         <div className="card-body">
           <p className="card-title">{intervenant.Nom}</p>
           <p className="card-text">{intervenant.Prenom}</p>
+          <img className="card-img-top" src={ intervenant.SelectedFile} alt="intervenant image"/>          
           <p className="card-text">{intervenant.NSS}</p>
+
          
         </div>
         <div>
-          <button type="button" class="btn btn-danger" onClick={handleClick}>
+          <button type="button" className="btn btn-danger" onClick={handleClick}>
             Supprimer Intervenant
           </button>
         </div>
-        <button type="button" class="btn btn-success" onClick={handleEdit}>
+        <button type="button" className="btn btn-success" onClick={handleEdit}>
           Modifier Intervenant
         </button>
 
-       <Link to={`/intervenantDetails/${intervenant._id}`}>
+       <Link to={`/intervenant-details/${intervenant._id}`}>
         <button className="btn btn-primary" onClick={getIntervenant}>Détails sur cet intervenant</button>
         </Link>
 
@@ -84,6 +111,16 @@ const IntervenantCard = ({ intervenant }) => {
               />
             </div>
             <div className="form-group">
+            <label for="SelectedFile">image/photo</label>
+            <input
+            onChange={handleChange}
+            type="text"
+            className="form-control"
+            id="SelectedFile"
+        value={updatedIntervenant.SelectedFile}
+        />
+        </div>
+            <div className="form-group">
               <label for="NSS">N°SS</label>
               <input
                 onChange={handleChange}
@@ -93,14 +130,104 @@ const IntervenantCard = ({ intervenant }) => {
                 value={updatedIntervenant.NSS}
               />
             </div>
-        
-
+            <div className="form-group">
+              <label for="NSuiviCarte">N° Suivi de Carte</label>
+              <input
+                onChange={handleChange}
+                type='number'
+                className="form-control"
+                id="NSuiviCarte"
+                value={updatedIntervenant.NSuiviCarte}
+              />
+            </div>
+            <div className="form-group">
+              <label for="CarteVitale">N° Carte Vitale</label>
+              <input
+                onChange={handleChange}
+                type='number'
+                className="form-control"
+                id="CarteVitale"
+                value={updatedIntervenant.CarteVitale}
+              />
+            </div>
+            <div className="form-group">
+              <label for="DateDeNaissance">Date de naissance</label>
+              <input
+                onChange={handleChange}
+                type='date'
+                className="form-control"
+                id="DateDeNaissance"
+                value={updatedIntervenant.DateDeNaissance}
+              />
+            </div>
+            <div className="form-group">
+              <label for="CarteIdentite">N° Carte d'Identité</label>
+              <input
+                onChange={handleChange}
+                type='number'
+                className="form-control"
+                id="CarteIdentite"
+                value={updatedIntervenant.CarteIdentite}
+              />
+            </div>
+            <div className="form-group">
+              <label for="DateDerniereVisiteMedicale">Dernière date de visitie médicale</label>
+              <input
+                onChange={handleChange}
+                type='date'
+                className="form-control"
+                id="DateDerniereVisiteMedicale"
+                value={updatedIntervenant.DateDerniereVisiteMedicale}
+              />
+            </div>
+            <div className="form-group">
+              <label for="VisiteMedicaleARenouvelerAvantLe">Visitie médicale à renouvler avant </label>
+              <input
+                onChange={handleChange}
+                type='date'
+                className="form-control"
+                id="VisiteMedicaleARenouvelerAvantLe"
+                value={updatedIntervenant.VisiteMedicaleARenouvelerAvantLe}
+              />
+            </div>
+            <div className="form-group">
+              <label for="DateDerniereFicheDexposition">Date dernière fiche d'éxposition </label>
+              <input
+                onChange={handleChange}
+                type='date'
+                className="form-control"
+                id="DateDerniereFicheDexposition"
+                value={updatedIntervenant.DateDerniereFicheDexposition}
+              />
+            </div>
+            <div className="form-group">
+              <label for="DateDerniereFicheDaptitude">Date dernière fiche d'aptitude </label>
+              <input
+                onChange={handleChange}
+                type='date'
+                className="form-control"
+                id="DateDerniereFicheDaptitude"
+                value={updatedIntervenant.DateDerniereFicheDaptitude}
+              />
+            </div>
+            <div className="form-group">
+              <label for="Commentaire">Commentaire</label>
+              <input
+                onChange={handleChange}
+                type='text'
+                className="form-control"
+                id="Commentaire"
+                value={updatedIntervenant.Commentaire}
+              />
+            </div>
             <button type="submit" className="btn btn-primary">
               Appliquer
             </button>
           </form>
         ) : null}
       </div>
+      <button>modifier l'intervenant</button>
+      <button>supprimer l'intervenant</button>
     </div>
   )
 }

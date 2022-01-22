@@ -1,85 +1,89 @@
-import React, { useEffect, useState } from "react";
-import { deleteUser,updateUser,getOneUser } from "../../Redux/Actions/UserActions";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import React, { useState } from "react"
+import { deleteUser,updateUser,getOneUser } from "../../Redux/Actions/UserActions"
+import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+import { useNavigate } from "react-router"
 
 const UserCard = ({ user }) => {
    console.log("hello from userCard")
   const navigate=useNavigate()
-  const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+  const dispatch = useDispatch()
+  const [show, setShow] = useState(false)
   const [updatedUser, setupDated] = useState({
-    username: " ",
-    email: " ",
-    SelectedFile: " ",
-    NumSiret:" ",
-    SiegeSocialAdresse:" ",
-    SiegeSocialTelephone:" ",
-    SiegeSocialEmail:" ",
-    RepresentantNom:" ",
-    RepresentFonction:" ",
-    RepresentantTelephone:" ",
-    RepresentantEmail:" ",
-    RepresentantNumHabilitation:" ",
-    SISERINumProtocole:" ",
-    SISERINomCle:" ",
-    SISERIUpdate:" ",
-    MDTNom:" ",
-    MDTPrenom:" ",
-    MDTNumHabilitation:" ",
-    MDTSiret:" ",
-    MDTTelephone:" ",
-    MDTEmail:" ",
-    ContratNum:" ",
-    ContratDateDebut:" ",
-    ContratDateFin:" ",
+    username: "",
+    email: "",
+    password: "",
+    SelectedFile:"",
+    NumSiret:"",
+    role:"",
+    SiegeSocialAdresse:"",
+    SiegeSocialTelephone:"",
+    SiegeSocialEmail:"",
+    RepresentantNom:"",
+    RepresentFonction:"",
+    RepresentantTelephone:"",
+    RepresentantEmail:"",
+    RepresentantNumHabilitation:"",
+    SISERINumProtocole:"",
+    SISERINomCle:"",
+    SISERIUpdate:"",
+    MDTNom:"",
+    MDTPrenom:"",
+    MDTNumHabilitation:"",
+    MDTSiret:"",
+    MDTTelephone:"",
+    MDTEmail:"",
+    ContratNum:"",
+    ContratDateDebut:"",
+    ContratDateFin:"",
 
   })
   const handleChange = (event) => {
-    setupDated({ ...updatedUser, [event.target.id]: event.target.value });
-  };
+    setupDated({ ...updatedUser, [event.target.id]: event.target.value })
+  }
   const handleClick = () => {
-    dispatch(deleteUser(user._id));
-  };
+    dispatch(deleteUser(user._id))
+  }
   const handleEdit = () => {
     if (show) {
-      setShow(false);
+      setShow(false)
     } else {
-      setShow(true);
+      setShow(true)
     }
-  };
+  }
   const onSubmit = (event) => {
-    event.preventDefault();
-    dispatch(updateUser(user._id, user));
+    event.preventDefault()
+    dispatch(updateUser(user._id, user, updatedUser))
     setupDated({ 
-      username: " ",
-      email: " ",
-      SelectedFile: " ",
-      NumSiret:" ",
-      SiegeSocialAdresse:" ",
-      SiegeSocialTelephone:" ",
-      SiegeSocialEmail:" ",
-      RepresentantNom:" ",
-      RepresentFonction:" ",
-      RepresentantTelephone:" ",
-      RepresentantEmail:" ",
-      RepresentantNumHabilitation:" ",
-      SISERINumProtocole:" ",
-      SISERINomCle:" ",
-      SISERIUpdate:" ",
-      MDTNom:" ",
-      MDTPrenom:" ",
-      MDTNumHabilitation:" ",
-      MDTSiret:" ",
-      MDTTelephone:" ",
-      MDTEmail:" ",
-      ContratNum:" ",
-      ContratDateDebut:" ",
-      ContratDateFin:" ",
-    });
-    setShow(false);
-  };
+      username: "",
+    email: "",
+    password: "",
+    SelectedFile:"",
+    NumSiret:"",
+    role:"",
+    SiegeSocialAdresse:"",
+    SiegeSocialTelephone:"",
+    SiegeSocialEmail:"",
+    RepresentantNom:"",
+    RepresentFonction:"",
+    RepresentantTelephone:"",
+    RepresentantEmail:"",
+    RepresentantNumHabilitation:"",
+    SISERINumProtocole:"",
+    SISERINomCle:"",
+    SISERIUpdate:"",
+    MDTNom:"",
+    MDTPrenom:"",
+    MDTNumHabilitation:"",
+    MDTSiret:"",
+    MDTTelephone:"",
+    MDTEmail:"",
+    ContratNum:"",
+    ContratDateDebut:"",
+    ContratDateFin:"",
+    })
+    setShow(false)
+  }
   const getUser=()=>{
     dispatch(getOneUser(user._id))
      navigate(`/details`) 
@@ -112,7 +116,7 @@ const UserCard = ({ user }) => {
 
         {show ? (
           <form onSubmit={onSubmit}>
-            <div className="form-group">
+           <div className="form-group">
               <label for="username">Username</label>
               <input
                 onChange={handleChange}
@@ -144,7 +148,10 @@ const UserCard = ({ user }) => {
                 placeholder="inserer le lien de l'image/logo"
                 value={updatedUser.SelectedFile}
               />
-            </div>
+              </div>
+
+
+
             <div className="form-group">
               <label for="NumSiret">N°SIRET</label>
               <input
@@ -225,7 +232,7 @@ const UserCard = ({ user }) => {
                 type="number"
                 className="form-control"
                 id="SiegeSocialTelephone"
-                value={updatedUser.SiegeSocialTelephone}
+                value={user.SiegeSocialTelephone}
               />
             </div>
             <div className="form-group">
@@ -367,8 +374,7 @@ const UserCard = ({ user }) => {
                 id="ContratDateFin"
                 value={updatedUser.ContratDateFin}
               />
-            </div>
-
+            </div>  
             <button type="submit" className="btn btn-primary">
               Mettre à jour les informations
             </button>
@@ -376,7 +382,7 @@ const UserCard = ({ user }) => {
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserCard;
+export default UserCard

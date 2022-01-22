@@ -1,17 +1,17 @@
 const sendEmail = require ("../Utils/SendEmails")
-const User = require('../Models/User');
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const User = require('../Models/User')
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 
 const registerController = async (request, response) => {
-  let user = request.body;
+  let user = request.body
   try {
-    const searchedUser = await User.findOne({ email: user.email });
+    const searchedUser = await User.findOne({ email: user.email })
     if (searchedUser) {
-      return response.status(400).json({ errors:[{msg:"user already exists"}] });
+      return response.status(400).json({ errors:[{msg:"Ce client éxiste déjà"}] })
     }
-    const hashedPasword = await bcrypt.hash(user.password, 10);
+    const hashedPasword = await bcrypt.hash(user.password, 10)
     const newUser = await new User({
       username: user.username,
       email: user.email,
@@ -40,33 +40,61 @@ const registerController = async (request, response) => {
       ContratDateDebut:user.ContratDateDebut,
       ContratDateFin:user.ContratDateFin,
 
-    });
-    await newUser.save();
+    })
+    await newUser.save()
     const token = jwt.sign(
-      { username: newUser.username, email: newUser.email, id: newUser._id },
+      { 
+        username: newUser.username, 
+        email: newUser.email, 
+/*         password:hashedPasword, */
+        id: newUser._id,
+        SelectedFile:newUser.SelectedFile,
+      NumSiret:newUser.NumSiret,
+      role:newUser.role,
+      SiegeSocialAdresse:newUser.SiegeSocialAdresse,
+      SiegeSocialTelephone:newUser.SiegeSocialTelephone,
+      SiegeSocialEmail:newUser.SiegeSocialEmail,
+      RepresentantNom:newUser.RepresentantNom,
+      RepresentFonction:newUser.RepresentFonction,
+      RepresentantTelephone:newUser.RepresentantTelephone,
+      RepresentantEmail:newUser.RepresentantEmail,
+      RepresentantNumHabilitation:newUser.RepresentantNumHabilitation,
+      SISERINumProtocole:newUser.SISERINumProtocole,
+      SISERINomCle:newUser.SISERINomCle,
+      SISERIUpdate:newUser.SISERIUpdate,
+      MDTNom:newUser.MDTNom,
+      MDTPrenom:newUser.MDTPrenom,
+      MDTNumHabilitation:newUser.MDTNumHabilitation,
+      MDTSiret:newUser.MDTSiret,
+      MDTTelephone:newUser.MDTTelephone,
+      MDTEmail:newUser.MDTEmail,
+      ContratNum:newUser.ContratNum,
+      ContratDateDebut:newUser.ContratDateDebut,
+      ContratDateFin:newUser.ContratDateFin,
+      },
       process.env.KEY
-    );
+    )
 
- response.status(200).json({ newUser, token });
+ response.status(200).json({ newUser, token })
   } catch (error) {
-    response.status(500).json({ errors:[{msg:"error server"}] });
+    response.status(500).json({ errors:[{msg:"Création de compte a échoué(registerController a écouhé, from authcontroller)"}] })
   }
-}; 
+} 
 
 
  const loginController = async (request, response) => {
   //request
-  const user = request.body;
+  const user = request.body
   try {
     //search for user
-    const searchedUser = await User.findOne({ email: user.email });
+    const searchedUser = await User.findOne({ email: user.email })
     if (!searchedUser) {
-      return response.status(401).json({ errors:[{msg:"you must register before"}] });
+      return response.status(401).json({ errors:[{msg:"Veuillez créer un compte pour pouvoir vous connecter"}] })
     }
     //compare the passwordl of the user request with the password saved on the databse (searchedUser)
-    const result = await bcrypt.compare(user.password, searchedUser.password);
+    const result = await bcrypt.compare(user.password, searchedUser.password)
     if (!result) {
-      return response.status(400).json({ errors:[{msg:"your passwordl is wrong"}] });
+      return response.status(400).json({ errors:[{msg:"Mot de pass incorrect"}] })
     }
     if (result == true) {
       const token = await jwt.sign(
@@ -76,16 +104,16 @@ const registerController = async (request, response) => {
           id: searchedUser._id,
         },
         process.env.KEY
-      );
+      )
 
-       response.status(200).json({searchedUser,token}); 
+       response.status(200).json({searchedUser,token}) 
 
     }
   } catch (error) {
     console.log(error)
-    response.status(500).json({ message: "login failed" });
+    response.status(500).json({ message: "votre authentification a échoué" })
   }
-}; 
+} 
 /* 
 exports.forgotPassword = async (req, res, next) => {
   //get email from the body
@@ -177,4 +205,4 @@ const resetToken = user.getResetPasswordToken()
 } */
 
 
-module.exports = { registerController, loginController };
+module.exports = { registerController, loginController }

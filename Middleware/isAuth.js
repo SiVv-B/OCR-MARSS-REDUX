@@ -1,16 +1,16 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken")
 const User=require('../Models/User')
 const isAuth=async(request,response,next)=>{
     try {
         const token=request.header('token')
-    const verifyToken=await jwt.verify(token,process.env.KEY);
+    const verifyToken=await jwt.verify(token,process.env.KEY)
     if(!verifyToken) {
-        return response.status(401).json({message:'you are not authorized'})
+        return response.status(401).json({message:'Veuillez vous authentifier pour avoir accès'})
     }
    
-    const user=await User.findById(verifyToken.id);
+    const user=await User.findById(verifyToken.id)
     request.user=user 
-    next();
+    next()
     } catch (error) {
         console.log(error)
     }

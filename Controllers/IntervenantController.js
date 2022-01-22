@@ -15,6 +15,17 @@ const postIntervenant = async (request, response) => {
         NSS: intervenant.NSS,
         Nom: intervenant.Nom,
         Prenom: intervenant.Prenom,
+        SelectedFile: intervenant.SelectedFile,
+        DateDeNaissance:intervenant.DateDeNaissance,
+        NSuiviCarte:intervenant.NSuiviCarte,
+        DateDerniereVisiteMedicale:intervenant.DateDerniereVisiteMedicale,
+        VisiteMedicaleARenouvelerAvantLe:intervenant.VisiteMedicaleARenouvelerAvantLe,
+        DateDerniereFicheDexposition:intervenant.DateDerniereFicheDexposition,
+        DateDerniereFicheDaptitude:intervenant.DateDerniereFicheDaptitude,
+        Commentaire:intervenant.Commentaire,
+        CarteIdentite:intervenant.CarteIdentite,
+        CarteVitale:intervenant.CarteVitale,
+
     });
     await newIntervenant.save();
     response.status(200).json({ intervenant: newIntervenant });

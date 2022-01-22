@@ -1,19 +1,22 @@
 import {
-    GET_ALL_INTERVENANTS,
-    GET_INTERVENANT,
-    UPDATE_INTERVENANT,
+  GET_ALL_INTERVENANTS,
+  GET_INTERVENANT,
+  UPDATE_INTERVENANT,
+  ADD_INTERVENANT,
    
   } from '../Actions/ActionTypes'
   const initialState = {
-    intervenants: [], intervenant:null, message: ' hello', loading: true, }
+    intervenants: [], intervenant:{}, message: ' hello', loading: true, }
   const IntervenantReducer = (state = initialState, action) => {
     switch (action.type) {
       case GET_ALL_INTERVENANTS:
         return { ...state, intervenants: action.payload }
       case UPDATE_INTERVENANT:
-        return { ...state, message: action.payload }
+        return { ...state, intervenant: action.payload }
       case GET_INTERVENANT:
-        return { ...state, intervenant: action.payload, message: 'alo' }
+        return { ...state, intervenant: action.payload, message: 'update intervenant works' }
+        case ADD_INTERVENANT:
+          return { ...state, intervenant: action.payload,  }
         default:
         return state
     

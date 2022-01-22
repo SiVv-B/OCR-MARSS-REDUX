@@ -1,19 +1,19 @@
-const { body, validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator")
 const registrationValidation = [
-  body("username",'you must type your name').isString(),
+  body("username",'Vous devez écrire le nom avec le quel vous vous êtes authentifié').isString(),
   body("email").isEmail(),
-  body("password","the passsword must be 6 caracter at least").isLength({ min: 6 })
-];
+  body("password","Vous devez mettre au moins 6 caractères").isLength({ min: 6 })
+]
 const loginValudation=[
     body("email").isEmail(),
-    body("password","the passsword must be 6 caracter at least").isLength({ min: 6 })
+    body("password","Vous devez mettre au moins 6 caractères").isLength({ min: 6 })
   ]
 const validation=async(request,response,next)=>{
-    const errors = validationResult(request);
+    const errors = validationResult(request)
     if (!errors.isEmpty()) {
-      return response.status(400).json({ errors: errors.array() });
+      return response.status(400).json({ errors: errors.array() })
     }
-    next();
+    next()
 }
 
 module.exports={registrationValidation,validation,loginValudation}

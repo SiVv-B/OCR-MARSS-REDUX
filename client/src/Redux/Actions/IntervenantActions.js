@@ -17,11 +17,14 @@ export const GetIntervenants = () => async (dispatch) => {
       console.log(error);
     }
   };
-  export const addIntervenant = (intervenant) => async (dispatch) => {
+  export const addIntervenant = (newIntervenant,navigate) => async (dispatch) => {
     try {
-      console.log(intervenant);
-      const response = await axios.post("/client/intervenant", intervenant);
-/*       dispatch({ type: ADD_INTERVENANT, payload: response.data.intervenant }) */
+      const response = await axios.post("/client/intervenant", newIntervenant);
+dispatch(GetIntervenants())         
+dispatch({ type: ADD_INTERVENANT, payload: response.data.intervenant }) 
+/* comment navigate vers le profil de l'intervenant??? */
+navigate(`/intervenantsListe`)
+/* ou intervenants ou response.data */
     } catch (error) {
       console.log(error);
     }
@@ -39,9 +42,9 @@ export const GetIntervenants = () => async (dispatch) => {
   export const updateIntervenant = (id, intervenant) => async (dispatch) => {
     try {
       const response = await axios.put(`/client/intervenant/${id}`, intervenant);
-      console.log("from actions single intervenant",response.data.message)
+      console.log("from actions single intervenant",response.data.intervenant)
        dispatch(GetIntervenants()) 
-      dispatch({type:UPDATE_INTERVENANT,payload:response.data.message})
+      dispatch({type:UPDATE_INTERVENANT,payload:response.data.intervenant})
     } catch (error) {
       console.log(error);
     }

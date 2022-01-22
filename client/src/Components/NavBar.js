@@ -36,11 +36,11 @@ const Navbar = () => {
             <Link to="/add"  className="navbar-brand">       
             Add User
         </Link>
-        <Link to="/intervenantsBoutton"  className="navbar-brand">       
-            Intervenant management
-        </Link>
         <Link to="/intervenantsListe"  className="navbar-brand">       
             Intervenant liste
+        </Link>
+        <Link to="/intervenant-add"  className="navbar-brand">       
+            Ajouter intervenant
         </Link>
 
           </div>

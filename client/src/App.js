@@ -1,7 +1,7 @@
 import React from 'react'
-import { useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { getUser } from "./Redux/Actions/AuthActions";
+import { useEffect } from "react"
+import { useDispatch } from 'react-redux'
+import { getUser } from "./Redux/Actions/AuthActions"
 
 //Routing
 import PrivateRoute from './Components/Routing/PrivateRoute'
@@ -39,6 +39,7 @@ function App() {
     <Route path="/profile" element={
       <PrivateRoute  >
         <UserProfile/>
+        <SingleIntervenant />
       </PrivateRoute>} />
         {/* user management routes */}
         <Route path="/bouttons" element={<Bouttons />} />
