@@ -13,34 +13,34 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand">OCR-MARSS</a>
+        <a className="navbar-brand" style={{color:'red'}}>OCR-MARSS</a>
         {isAuth ? (
           <button onClick={handleClick}>LOG OUT</button>
         ) : (null)}
           <div>
               <Link to="/" className="navbar-brand">
-              Home
+              Page d'accuil
             </Link>
             <Link to="/register" className="navbar-brand">
-              Register
+              Créer un compte
             </Link>
             <Link to="/login" className="navbar-brand">
-              Login
-            </Link>
-            <Link to="/bouttons" className="navbar-brand">
-              user management
+              Se connecter
             </Link>
             <Link to="/list" className="navbar-brand">
-              user list
+              liste des clients
             </Link>
             <Link to="/add"  className="navbar-brand">       
-            Add User
+           Ajouter un client
         </Link>
         <Link to="/intervenantsListe"  className="navbar-brand">       
-            Intervenant liste
+            Liste des intervenants
         </Link>
         <Link to="/intervenant-add"  className="navbar-brand">       
-            Ajouter intervenant
+            Ajouter un intervenant
+        </Link>
+        <Link to="/toutintervenantsdesclients"  className="navbar-brand">       
+            liste intervenant relié user
         </Link>
 
           </div>

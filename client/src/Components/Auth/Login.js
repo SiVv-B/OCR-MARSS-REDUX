@@ -1,8 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../Redux/Actions/AuthActions";
-import {useNavigate} from "react-router-dom";
+import React from "react"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { login } from "../../Redux/Actions/AuthActions"
+import {useNavigate} from "react-router-dom"
 const Login = () => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -11,7 +11,7 @@ const Login = () => {
     setUser({...user,[event.target.id]:event.target.value})
   }
   const onSubmit=(event)=>{
-   event.preventDefault();
+   event.preventDefault()
    dispatch(login(user,navigate))
    setUser({email:" ",password:" "})
   }
@@ -41,7 +41,7 @@ const Login = () => {
         Submit
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

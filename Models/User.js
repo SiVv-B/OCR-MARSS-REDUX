@@ -4,6 +4,11 @@ const mongoose=require('mongoose');
 //username = name of the company
 //SelectedFile = company's logo or picture
 const userSchema=mongoose.Schema({
+
+          Intervenant: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Intervenant",
+          },
     SelectedFile: {
         type: String,
         default:

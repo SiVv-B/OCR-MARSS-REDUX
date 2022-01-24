@@ -1,15 +1,17 @@
-const mongoose = require("mongoose");
-const Intervenant = require("../Models/Intervenant");
+const mongoose = require("mongoose")
+const Intervenant = require("../Models/Intervenant")
+const User = require("../Models/User")
+const toId=  mongoose.Types.ObjectId
 //Add intervenant
 //@request.body
 const postIntervenant = async (request, response) => {
-  const intervenant = request.body;
+  const intervenant = request.body
   try {
-    const searchedIntervenant = await Intervenant.findOne({ NSS: intervenant.NSS });
+    const searchedIntervenant = await Intervenant.findOne({ NSS: intervenant.NSS })
     if (searchedIntervenant) {
       return response
         .status(400)
-        .json({ message: "Cet intervenant est déjà enregistré" });
+        .json({ message: "Cet intervenant est déjà enregistré" })
     }
     const newIntervenant = await new Intervenant({
         NSS: intervenant.NSS,
@@ -26,41 +28,41 @@ const postIntervenant = async (request, response) => {
         CarteIdentite:intervenant.CarteIdentite,
         CarteVitale:intervenant.CarteVitale,
 
-    });
-    await newIntervenant.save();
-    response.status(200).json({ intervenant: newIntervenant });
+    })
+    await newIntervenant.save()
+    response.status(200).json({ intervenant: newIntervenant })
   } catch (error) {
-    response.status(500).json({ error: "L'intervenant n'a pas pu être enregistré" });
+    response.status(500).json({ error: "L'intervenant n'a pas pu être enregistré" })
   }
-};
+}
 //get request
 //no need to teh request body
 //no nee to request.paramps
 const getAllIntervenants = async (request, response) => {
   try {
-    const intervenants = await Intervenant.find();
-    response.status(200).json({ intervenants: intervenants });
+    const intervenants = await Intervenant.find()
+    response.status(200).json({ intervenants: intervenants })
   } catch (error) {
     console.log('erreur get all intervenants router',error)
-    response.status(500).json({ error: "laffichage de tous les intervenats a échoué" });
+    response.status(500).json({ error: "laffichage de tous les intervenats a échoué" })
   }
-};
+}
 //delete request
 //i need request.params
 const deleteIntervenant = async (request, response) => {
   try {
-    const id = request.params.id;
-    await Intervenant.findByIdAndDelete(id);
+    const id = request.params.id
+    await Intervenant.findByIdAndDelete(id)
     response
       .status(200)
-      .json({ message: "L'intervenat a été effacé avec succès" });
+      .json({ message: "L'intervenat a été effacé avec succès" })
   } catch (error) {
-    response.status(500).json({ error: "la suppression de l'intervenant a échoué" });
+    response.status(500).json({ error: "la suppression de l'intervenant a échoué" })
   }
-};
+}
 //update intervenant 
-//I need request.params;
-//I need request.body;
+//I need request.params
+//I need request.body
 const updateIntervenant=async(request,response)=>{
     const id =request.params.id
     const newIntervenant=request.body
@@ -76,11 +78,30 @@ const updateIntervenant=async(request,response)=>{
 const getOneIntervenant=async(request,response)=>{
     const id =request.params.id
     try {
-        const intervenantFound=await Intervenant.findById(id);
+        const intervenantFound=await Intervenant.findById(id)
         response.status(200).json({intervenant:intervenantFound})
 
     } catch (error) {
         response.status(500).json({error:"l'Intervenant n'a pas pu être trouvé"})
     }
 }
-module.exports = { postIntervenant, getAllIntervenants ,deleteIntervenant,updateIntervenant,getOneIntervenant};
+
+
+
+//link Intervenant To User
+const ProfileIntervenantToUser = async (req,res)=>{
+  //get user's id
+  req.params.User = toId(req.params.user)
+  //get intervenant's id
+  const intervenant = await Intervenant.findById(req.params.intervenant)
+  intervenant.User = req.params.User
+  intervenant.save()
+  res.status(200).json({intervenantDuClient:intervenant})
+}
+
+//get all intervenants linked with user
+const allIntervenantduclient = async(req,res)=>{
+  const inervenants = await Intervenant.find().populate('User')
+  res.json({intervenantDuClient:inervenants})
+}
+module.exports = { postIntervenant, getAllIntervenants ,deleteIntervenant,updateIntervenant,getOneIntervenant,ProfileIntervenantToUser,allIntervenantduclient}

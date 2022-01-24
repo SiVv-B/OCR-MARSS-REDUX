@@ -11,11 +11,9 @@ const UserList = () => {
     dispatch(GetUsers())
   }, [dispatch])
 
-
   const users = useSelector((state) => state.UserReducer.users)
-
-
   console.log('Users list:', users)
+  
   return (
     <div style={{ textAlign: 'center', marginTop: '30px' }}>
       {users.map((user) => (

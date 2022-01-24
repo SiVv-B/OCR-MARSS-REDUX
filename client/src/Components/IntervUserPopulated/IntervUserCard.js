@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 import { Link } from "react-router-dom"
-import { deleteIntervenant, getOneIntervenant, updateIntervenant } from "../../Redux/Actions/IntervenantActions"
+import { deleteIntervenant, profileIntervUser, updateIntervenant } from "../../Redux/Actions/IntervenantActions"
 
-const IntervenantCard = ({ intervenant }) => {
+const IntervUserCard = ({ intervenant }) => {
    console.log("hello from IntervenantCard")
   const navigate=useNavigate()
   const dispatch = useDispatch()
@@ -59,7 +59,7 @@ const IntervenantCard = ({ intervenant }) => {
     setShow(false)
   }
   const getIntervenant=()=>{
-    dispatch(getOneIntervenant(intervenant._id))
+    dispatch(profileIntervUser(intervenant._id))
 
   }
 
@@ -230,4 +230,4 @@ const IntervenantCard = ({ intervenant }) => {
   )
 }
 
-export default IntervenantCard
+export default IntervUserCard

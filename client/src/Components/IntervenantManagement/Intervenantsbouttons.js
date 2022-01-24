@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 import {GetIntervenants} from "../../Redux/Actions/IntervenantActions"
 import {useDispatch} from "react-redux"
 
@@ -25,7 +25,7 @@ function Intervenantsbouttons() {
         </Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default Intervenantsbouttons;
+export default Intervenantsbouttons

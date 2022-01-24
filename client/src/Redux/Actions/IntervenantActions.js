@@ -5,10 +5,38 @@ import {
     UPDATE_INTERVENANT,
     ADD_INTERVENANT,
     DELETE_INTERVENANT,
+
+    ADD_INTERVENANTUSER,
+GET_ALL_INTERVENANTSUSER,
+GET_INTERVENANTUSER,
+UPDATE_INTERVENANTUSER,
+ DELETE_INTERVENANTUSER,
    
   } from '../Actions/ActionTypes'
 
+  export const AllIntervUsers = () => async (dispatch) => {
+    try {
+      const response = await axios.get("/client/toutintervenantsdesclients")
+      dispatch({ type: GET_ALL_INTERVENANTSUSER, payload: response.data.intervenants })
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
+
+  export const profileIntervUser=(id)=>async(dispatch)=>{
+    try {
+      const response=await axios.get(`/intervenantduclient/${id}/${id}`)
+      console.log("from Intervant Action one intervenant",response.data.intervenant)
+      dispatch({type:GET_INTERVENANT,payload:response.data.intervenant})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
+
+
 export const GetIntervenants = () => async (dispatch) => {
     try {
       const response = await axios.get("/client/intervenant")

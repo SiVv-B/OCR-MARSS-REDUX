@@ -1,7 +1,9 @@
 const mongoose = require("mongoose")
 const User = require("../Models/User")
+const Intervenant = require("../Models/Intervenant")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const toId=  mongoose.Types.ObjectId
 //create one user
 //@request.body
 const postUser = async (request, response) => {
@@ -114,18 +116,7 @@ const deleteUser = async (request, response) => {
 //update user 
 //I need request.params
 //I need request.body
-/* const updateUser=async(request,response)=>{
-    const id =request.params.id
-    const newUser=request.body
- try {
-     const updatedUser =await User.findByIdAndUpdate(id,newUser,{new:true})
-     response.status(200).json({user:updatedUser, message:'Mise à jour du client effectuée avec succès'})
- } catch (error) {
-   console.log("la mise à jour n'a pas pu être effectuée",error)
-     response.status(500).json({error:'modification échouée'})
- }
-}
- */
+
 const updateUser=async(request,response)=>{
   const id =request.params.id
   const newUser=request.body
@@ -150,4 +141,6 @@ const getOneUser=async(request,response)=>{
         response.status(500).json({error:'Client non récupéré'})
     }
 }
+
+
 module.exports = { postUser, getAllUsers ,deleteUser,updateUser,getOneUser}

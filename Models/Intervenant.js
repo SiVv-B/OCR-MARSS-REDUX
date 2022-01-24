@@ -1,9 +1,16 @@
 const mongoose=require('mongoose');
+const User = require("./User")
+
 
 //user = company (client)
 //username = name of the company
 //SelectedFile = company's logo or picture
 const IntervenantSchema=mongoose.Schema({
+          User: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+          },
+
     SelectedFile: {
         type: String,
         default:

@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { register } from "../../Redux/Actions/AuthActions";
-import { useDispatch } from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import React, { useState } from "react"
+import { register } from "../../Redux/Actions/AuthActions"
+import { useDispatch } from "react-redux"
+import {useNavigate} from "react-router-dom"
+import {useSelector} from "react-redux"
 import AuthReducer from "../../Redux/Reducers/UserReducer"
 
 const Register = () => {
   const navigate=useNavigate()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [user, setUser] = useState({
     username: " ",
     email: " ",
     password: " ",
     SelectedFile:" ",
-  });
+  })
   const handleChange = (event) => {
-    setUser({ ...user, [event.target.id]: event.target.value });
-  };
+    setUser({ ...user, [event.target.id]: event.target.value })
+  }
   const onSubmit = (event) => {
-    event.preventDefault();
-    dispatch(register(user,navigate));
+    event.preventDefault()
+    dispatch(register(user,navigate))
     setUser({
       username: " ",
       email: " ",
       password: " ",
       SelectedFile:" ",
-    });
-  };
+    })
+  }
   
   
   return (
@@ -82,7 +82,7 @@ const Register = () => {
         Creer un compte
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

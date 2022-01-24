@@ -342,7 +342,7 @@ const UserAdd = () => {
                 value={user.ContratDateFin}
               />
             </div> 
-                        <div className="form-group">
+{/*                         <div className="form-group">
               <label for="role">Date de fin du contrat</label>
               <input
                 onChange={handleChange}
@@ -352,7 +352,7 @@ const UserAdd = () => {
                 value={user.role}
               />
             </div> 
-            
+             */}
             
             
             

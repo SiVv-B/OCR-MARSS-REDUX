@@ -1,12 +1,12 @@
-import React ,{ useEffect}from "react"
-import { useSelector ,useDispatch} from "react-redux"
+/* import React ,{ useEffect}from "react";
+import { useSelector ,useDispatch} from "react-redux";
 import {getOneIntervenant} from "../../Redux/Actions/IntervenantActions"
-import { useParams } from "react-router"
+import { useParams } from "react-router";
 
-const SingleIntervenant = () => {
+const IntervUserProfile = () => {
   console.log("hello from singleuser")
     const dispatch=useDispatch()
-    const {id}=useParams()
+    const {id}=useParams();
     console.log("IntervenantID",id)
     const intervenant=useSelector(state=>state.IntervenantReducer.intervenant)
     console.log("intervenant: from single intervenant",intervenant)
@@ -42,7 +42,8 @@ const SingleIntervenant = () => {
      
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SingleIntervenant
+export default IntervUserProfile
+ */
