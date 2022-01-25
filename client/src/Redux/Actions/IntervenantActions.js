@@ -19,7 +19,7 @@ UPDATE_INTERVENANTUSER,
       const response = await axios.get("/client/toutintervenantsdesclients")
       dispatch({ type: GET_ALL_INTERVENANTSUSER, payload: response.data.intervenants })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
   
@@ -34,7 +34,6 @@ UPDATE_INTERVENANTUSER,
     }
   }
   
-
 
 
 export const GetIntervenants = () => async (dispatch) => {

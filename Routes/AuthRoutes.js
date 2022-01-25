@@ -10,8 +10,10 @@ const {getOneUser}=require('../Controllers/UsersManagementControllers')
 const isAuth=require('../Middleware/isAuth');
 const { is } = require('express/lib/request');
 
-router.post('/register',registrationValidation,validation,registerController);
-router.post('/login',loginValudation,validation,loginController)
+router.post('/register',validation,registerController);
+router.post('/login',validation,loginController)
+
+
 router.get('/current',isAuth,(request,response)=>{
     response.send({user:request.user})
 })

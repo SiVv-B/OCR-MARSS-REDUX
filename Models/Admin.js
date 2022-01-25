@@ -3,20 +3,16 @@ const mongoose=require('mongoose');
 //user = company (client)
 //username = name of the company
 //SelectedFile = company's logo or picture
-const userSchema=mongoose.Schema({
+const adminSchema=mongoose.Schema({
 
-          Intervenant: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Intervenant",
-          },
-              role: {
-        type: Number,
-        default: 1,
-      },
     SelectedFile: {
         type: String,
         default:
-          "https://png.pngtree.com/background/20210709/original/pngtree-the-future-of-the-company-the-blue-background-picture-image_904634.jpg",
+          "https://c8.alamy.com/comp/R5YAEG/gear-and-the-word-admin-3d-illustration-R5YAEG.jpg",
+      },
+    role: {
+        type: Number,
+        default: 0,
       },
     username:{
         type:String,
@@ -66,35 +62,9 @@ const userSchema=mongoose.Schema({
     SISERIUpdate:{
         type:Date,
     },
-    MDTNom:{
-        type:String,
-    },
-    MDTPrenom:{
-        type:String,
-    },
-    MDTNumHabilitation:{
-        type:Number,
-    },
-    MDTSiret:{
-        type:Number,
-    },
-    MDTTelephone:{
-        type:Number,
-    },
-    MDTEmail:{
-        type:String,
-    },
-    ContratNum:{
-        type:String,
-    },
-    ContratDateDebut:{
-        type:Date,
-    },
-    ContratDateFin:{
-        type:Date,
-    },
+   
 
 
 })
-module.exports=mongoose.model('User',userSchema)
+module.exports=mongoose.model('Admin',adminSchema)
 

@@ -114,6 +114,31 @@ const registerController = async (request, response) => {
     response.status(500).json({ message: "votre authentification a échoué" })
   }
 } 
+
+
+//Setting admin and user roles 
+
+/* function authRole(role) {
+  return (req,res,next) =>{
+    const userRole = req.body.role
+    if (role.includes(userRole)) {
+      next()
+    }else {
+      return res.status(401).json('Accès non autorisé')
+    }
+  }
+} */
+/* function authRole(role) {
+  return (req,res,next) =>{
+if (req.user.role !== role) {
+res.status(401)
+return res.send('Non autorisé')
+}
+next()
+  }
+} */
+
+
 /* 
 exports.forgotPassword = async (req, res, next) => {
   //get email from the body

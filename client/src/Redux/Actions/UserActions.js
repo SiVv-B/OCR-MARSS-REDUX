@@ -43,8 +43,8 @@ export const updateUser = (id, user) => async (dispatch) => {
   try {
     const response = await axios.put(`/client/user/${id}`, user)
     console.log("from edit user action",response.data.user)
-     dispatch(GetUsers()) 
     dispatch({type:UPDATE_USER,payload:response.data.user})
+     dispatch(GetUsers()) 
   } catch (error) {
     console.log(error)
   }

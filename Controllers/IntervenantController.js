@@ -89,7 +89,7 @@ const getOneIntervenant=async(request,response)=>{
 
 
 //link Intervenant To User
-const ProfileIntervenantToUser = async (req,res)=>{
+/* const ProfileIntervenantToUser = async (req,res)=>{
   //get user's id
   req.params.User = toId(req.params.user)
   //get intervenant's id
@@ -97,7 +97,23 @@ const ProfileIntervenantToUser = async (req,res)=>{
   intervenant.User = req.params.User
   intervenant.save()
   res.status(200).json({intervenantDuClient:intervenant})
+} */
+
+
+const ProfileIntervenantToUser = async (req,res)=>{
+ //to get an intervenant
+  const id = req.params.id
+  const intervenantFound = await Intervenant.findById(id).populate('User',['username,SelectedFile,email,NumSiret'])
+  res.status(200).json()
+
+
+
+
 }
+
+
+
+
 
 //get all intervenants linked with user
 const allIntervenantduclient = async(req,res)=>{

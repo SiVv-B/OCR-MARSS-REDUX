@@ -53,7 +53,7 @@ const UserCard = ({ user }) => {
   }
   const onSubmit = (event) => {
     event.preventDefault()
-    dispatch(updateUser(user._id, user, updatedUser))
+    dispatch(updateUser(user._id, updatedUser))
     setupDated({ 
       username: "",
     email: "",

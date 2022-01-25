@@ -1,7 +1,8 @@
 const express=require('express')
 const router=express.Router()
 const {postIntervenant,getAllIntervenants,deleteIntervenant,updateIntervenant,getOneIntervenant,ProfileIntervenantToUser,allIntervenantduclient}=require('../Controllers/IntervenantController')
-
+/* const {authRole} =require('../Controllers/AuthController')
+ */
 router.post('/intervenant',postIntervenant)
 router.get('/intervenant',getAllIntervenants)
 router.delete('/intervenant/:id',deleteIntervenant)
