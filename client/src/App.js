@@ -1,4 +1,6 @@
 import React from 'react'
+import { ThemeProvider } from "@mui/material";
+import theme from './Components/styling/theme'
 import { useEffect } from "react"
 import { useDispatch } from 'react-redux'
 import { getUser } from "./Redux/Actions/AuthActions"
@@ -17,7 +19,6 @@ import Navbar from "./Components/NavBar"
 import IntervenantsListe from './Components/IntervenantManagement/IntervantsListe'
 import SingleIntervenant from './Components/IntervenantManagement/SingleIntervenant'
 import AddIntervenant from './Components/IntervenantManagement/AddIntervenant'
-
 import IntervUserList from './Components/IntervUserPopulated/IntervUserList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -29,6 +30,7 @@ function App() {
     }
   },[])
   return (
+    <ThemeProvider theme ={theme}>
     <BrowserRouter>
        <Navbar /> 
       <Routes>
@@ -62,6 +64,7 @@ function App() {
       
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
