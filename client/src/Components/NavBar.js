@@ -18,29 +18,28 @@ import SearchIcon from '@mui/icons-material/Search'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import MailIcon from '@mui/icons-material/Mail'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import MoreIcon from '@mui/icons-material/MoreVert'
 
 import Switch from '@mui/material/Switch'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
 
-const menuOptionsNotAuth =[
+const menuOptionsNotAuth = [
   <Link to="/register" style={{ textDecoration: 'none', color: '#212121' }}>
-  Créer un compte{' '}
-</Link>,
-<Link to="/login" style={{ textDecoration: 'none', color: '#212121' }}>
+    Créer un compte{' '}
+  </Link>,
+  <Link to="/login" style={{ textDecoration: 'none', color: '#212121' }}>
     {' '}
     Se connecter{' '}
   </Link>,
 ]
 const menuOptions = [
-/*   <Link to="/register" style={{ textDecoration: 'none', color: '#212121' }}>
+  <Link to="/register" style={{ textDecoration: 'none', color: '#212121' }}>
     Créer un compte{' '}
-  </Link>, 
+  </Link>,
   <Link to="/login" style={{ textDecoration: 'none', color: '#212121' }}>
     {' '}
     Se connecter{' '}
-  </Link>,*/
+  </Link>,
   <Link to="/list" style={{ textDecoration: 'none', color: '#212121' }}>
     Liste des clients{' '}
   </Link>,
@@ -233,17 +232,18 @@ const Navbar = () => {
   )
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignSelf: 'flex-start',
+        justifyContent: 'flex-start',
+      }}
+    >
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
-
-
-          {isAuth ? (
-              <div>
-              {/* afficher le menu */}
-              </div>
-            ) : (null )}
+            {isAuth ? <div>{/* afficher le menu */}</div> : null}
             {/* menu options  dropdown menu*/}
             <IconButton
               size="large"
@@ -271,7 +271,7 @@ const Navbar = () => {
               PaperProps={{
                 style: {
                   maxHeight: ITEM_HEIGHT * 4.5,
-                  width: '20ch',
+                  width: '25ch',
                 },
               }}
             >
@@ -302,7 +302,12 @@ const Navbar = () => {
               />
             </Search>
             {isAuth && (
-              <div>
+              <div
+                style={{
+                  display: 'flex',
+                  marginLeft: '35%',
+                }}
+              >
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -351,8 +356,13 @@ const Navbar = () => {
                 </Menu>
               </div>
             )}
-               {isAuth ? (
-              <div>
+            {isAuth ? (
+              <div
+                style={{
+                  display: 'flex',
+                  marginLeft: '2%',
+                }}
+              >
                 <FormGroup>
                   <FormControlLabel
                     control={
@@ -360,18 +370,28 @@ const Navbar = () => {
                         checked={isAuth}
                         onChange={isAuthHandleClick}
                         aria-label="login switch"
-                        color="default" 
+                        color="default"
                       />
                     }
-                    label={isAuth ? 'Logout' : 'Login'}
+                    label={isAuth ? 'Se déconnecter' : 'Se connecter'}
                   />
                 </FormGroup>
               </div>
             ) : (
-              <Link to="/login" style={{ textDecoration: 'none', color: '#FFF' }}>
-              <Typography  component="div" sx={{ flexGrow: 1 }}>
-              Se connecter
-              </Typography>
+              <Link
+                to="/login"
+                style={{ textDecoration: 'none', color: '#FFF' }}
+              >
+                <Typography
+                  component="div"
+                  sx={{
+                    display: 'flex',
+                    marginLeft: '750%',
+                    width: '150%',
+                  }}
+                >
+                  Se connecter
+                </Typography>
               </Link>
             )}
           </Toolbar>

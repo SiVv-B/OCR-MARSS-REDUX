@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import IconButton from '@mui/material/IconButton'
 import Fab from '@mui/material/Fab'
@@ -23,24 +24,27 @@ const UserList = () => {
   return (
     <div>
       <div>
-        <Fab size="small" color="inherit" aria-label="add">
-          <Tooltip title="Ajouter Un client">
-            <IconButton>
-              <AddIcon />
-            </IconButton>
-          </Tooltip>
-        </Fab>
+        <Link to="/add">
+          <Fab size="small" color="inherit" aria-label="add">
+            <Tooltip title="Ajouter Un client">
+              <IconButton>
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
+          </Fab>
+        </Link>
       </div>
-      <div style={{ 
-        
-    border:'solid',
-          display: 'flex' , flexDirection: 'row',
-          flexWrap: 'wrap',justifyContent: 'space-evenly',
-          alignItems: 'center',
-          alignContent: 'flex-start',
-          width:'80%'
-          }}>
-  
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          flexWrap: 'wrap',
+          alignSelf: 'flex-start',
+          width: '95%',
+          marginLeft: '2%',
+        }}
+      >
         {users.map((user) => (
           <UserCard key={user._id} user={user} />
         ))}
