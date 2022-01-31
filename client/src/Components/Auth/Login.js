@@ -9,7 +9,6 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
-
 const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -32,14 +31,14 @@ const Login = () => {
         justifyContent: 'center',
         alignSelf: 'flex-start',
         width: '100%',
-      }}>
-    <form onSubmit={onSubmit}>
-
-    <Box
+      }}
+    >
+      <form onSubmit={onSubmit}>
+        <Box
           className="container"
           sx={{
             width: '200%',
-            marginTop: '10%',
+            marginTop: '15%',
             marginBottom: '10%',
           }}
         >
@@ -54,27 +53,27 @@ const Login = () => {
                 <p>Veuillez remplir les champs</p>
               </Typography>
               <Typography variant="body2" color="text.primary">
-              <div className="form-group">
-        <label for="email">Email du siège social</label>
-        <input
-          onChange={handleChange}
-          value={user.email}
-          type="email"
-          className="form-control"
-          id="email"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div className="form-group">
-        <label for="password">Mot de passe </label>
-        <input
-          onChange={handleChange}
-          value={user.password}
-          type="password"
-          className="form-control"
-          id="password"
-        />
-      </div>
+                <div className="form-group">
+                  <label for="email">Email du siège social</label>
+                  <input
+                    onChange={handleChange}
+                    value={user.email}
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="password">Mot de passe </label>
+                  <input
+                    onChange={handleChange}
+                    value={user.password}
+                    type="password"
+                    className="form-control"
+                    id="password"
+                  />
+                </div>
               </Typography>
             </CardContent>
           </Card>
@@ -87,9 +86,8 @@ const Login = () => {
         >
           Acceder au Compte client
         </button>
-
-     
-    </form>
+       
+      </form>
     </div>
   )
 }

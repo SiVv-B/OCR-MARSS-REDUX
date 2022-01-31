@@ -120,7 +120,7 @@ const Register = () => {
           className="btn btn-light"
           style={{ maxHeight: '5%', marginLeft: '22%', color: 'black' }}
         >
-          Acceder au Compte client
+          Créer un compte client
         </button>
       </form>
     </div>

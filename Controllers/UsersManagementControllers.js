@@ -54,7 +54,7 @@ const token = jwt.sign(
   { 
     username: newUser.username, 
     email: newUser.email, 
-/*         password:hashedPasword, */
+        password:hashedPasword, 
     id: newUser._id,
     SelectedFile:newUser.SelectedFile,
   NumSiret:newUser.NumSiret,

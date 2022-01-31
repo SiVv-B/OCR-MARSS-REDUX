@@ -22,6 +22,9 @@ import AddIntervenant from './Components/IntervenantManagement/AddIntervenant'
 import IntervUserList from './Components/IntervUserPopulated/IntervUserList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+
+
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -29,8 +32,11 @@ function App() {
       dispatch(getUser())
     }
   }, [])
+
   return (
     <ThemeProvider theme={theme}>
+      <div>
+        
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -61,6 +67,7 @@ function App() {
           <Route path="/toutintervenantsdesclients" element={<IntervUserList />}/>
         </Routes>
       </BrowserRouter>
+      </div>
     </ThemeProvider>
   )
 }

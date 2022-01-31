@@ -25,6 +25,7 @@ const postIntervenant = async (request, response) => {
         DateDerniereFicheDexposition:intervenant.DateDerniereFicheDexposition,
         DateDerniereFicheDaptitude:intervenant.DateDerniereFicheDaptitude,
         Commentaire:intervenant.Commentaire,
+        AutreCommentaire:intervenant.AutreCommentaire,
         CarteIdentite:intervenant.CarteIdentite,
         CarteVitale:intervenant.CarteVitale,
 

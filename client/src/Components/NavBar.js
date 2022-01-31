@@ -44,7 +44,7 @@ const menuOptions = [
     Liste des clients{' '}
   </Link>,
   <Link to="/add" style={{ textDecoration: 'none', color: '#212121' }}>
-    Ajouter un cliente{' '}
+    Ajouter un client{' '}
   </Link>,
   <Link
     to="/intervenantsListe"
@@ -59,15 +59,15 @@ const menuOptions = [
     {' '}
     Ajouter un intervenant{' '}
   </Link>,
-  <Link
+/*   <Link
     to="/toutintervenantsdesclients"
     style={{ textDecoration: 'none', color: '#212121' }}
   >
     liste intervenant relié user{' '}
-  </Link>,
+  </Link>, */
 ]
 
-const ITEM_HEIGHT = 48
+const ITEM_HEIGHT = 60
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -340,13 +341,12 @@ const SingleUser = () => {
             <div className="scrollDiv">
               <form onSubmit={onSubmit}>
                 <div className="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">Nom de l'entreprise</label>
                   <input
                     onChange={handleChange}
                     type="text"
                     className="form-control"
                     id="username"
-                    placeholder="Nom de l'entreprise ou username"
                     value={updatedUser.username}
                   />
                 </div>
@@ -357,10 +357,21 @@ const SingleUser = () => {
                     type="email"
                     className="form-control"
                     id="email"
-                    placeholder="email de l'entreprise client"
                     value={updatedUser.email}
                   />
                 </div>
+                <div className="form-group">
+                  <label for="password">Mot de pass</label>
+                  <input
+                    onChange={handleChange}
+                    type='password'
+                    className="form-control"
+                    id="password"
+                    value={updatedUser.password}
+                  />
+                </div>
+                
+
                 <div className="form-group">
                   <label for="SelectedFile">Image/logo</label>
                   <input
@@ -368,7 +379,6 @@ const SingleUser = () => {
                     type="text"
                     className="form-control"
                     id="SelectedFile"
-                    placeholder="inserer le lien de l'image/logo"
                     value={updatedUser.SelectedFile}
                   />
                 </div>
@@ -380,7 +390,6 @@ const SingleUser = () => {
                     type="number"
                     className="form-control"
                     id="NumSiret"
-                    placeholder="inserer le lien de l'image/logo"
                     value={updatedUser.NumSiret}
                   />
                 </div>

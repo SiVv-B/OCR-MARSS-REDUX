@@ -55,6 +55,9 @@ const IntervenantSchema=mongoose.Schema({
     CarteVitale:{
         type:String,
     },
+    AutreCommentaire:{
+        type:String,
+    }
 })
 module.exports=mongoose.model('Intervenant',IntervenantSchema)
 
